@@ -6,23 +6,48 @@ export function buildLoaders(options: BuildOptions): ModuleOptions['rules'] {
 
     const isDev = options.mode === 'development';
 
+    const cssLoader = {
+        loader: "css-loader",
+        options: {
+            modules: {
+                localIdentName: isDev ? '[path][name]__[local]' : '[hash:base64:8]'
+            }
+        },
+    }
+
     const scssLoader = {
         test: /\.s[ac]ss$/i,
         use: [
             // Creates `style` nodes from JS strings
             isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
             // Translates CSS into CommonJS
-            "css-loader",
+            cssLoader,
             // Compiles Sass to CSS
             "sass-loader",
         ],
     }
 
-    const tsxLoader = {
-        test: /\.tsx?$/,
-        use: 'ts-loader',
-        exclude: /node_modules/,
+    const imageLoader = {
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: 'asset/resource',
     }
 
-    return [ scssLoader , tsxLoader]
+    const babelLoader = {
+        test: /\.tsx?$/,
+        exclude: /node_modules/,
+        use: {
+            loader: "babel-loader",
+            options: {
+                presets: [
+                    '@babel/preset-env',
+                    "@babel/preset-typescript",
+                    ["@babel/preset-react", {
+                        "runtime": isDev ? "automatic" : "classic"
+                    }]
+                ]
+            }
+        }
+    }
+
+    return [scssLoader, imageLoader, babelLoader]
 }
