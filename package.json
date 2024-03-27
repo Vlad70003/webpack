@@ -4,8 +4,5 @@
   "workspaces": [
     "packages/*",
     "services/*"
-  ],
-  "dependencies": {
-    "react-refresh-typescript": "^2.0.9"
-  }
+  ]
 }
