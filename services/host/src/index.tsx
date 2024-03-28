@@ -1,5 +1,5 @@
 import {createRoot} from "react-dom/client";
-import {App} from "@/components/App";
+import {App} from "./components/App";
 
 import {
     createBrowserRouter,
@@ -19,16 +19,6 @@ const router = createBrowserRouter([
     {
         path: "/",
         element: <App />,
-        children: [
-            {
-                path: '/about',
-                element: <Suspense><About /></Suspense>,
-            },
-            {
-                path: '/shop',
-                element: <Suspense><Shop /></Suspense>
-            }
-        ]
     },
 ]);
 

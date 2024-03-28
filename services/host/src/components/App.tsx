@@ -1,8 +1,7 @@
 export const App = () => {
-
     return (
         <div>
-            <h1>PLATFORM</h1>
+                1212
         </div>
     );
 };

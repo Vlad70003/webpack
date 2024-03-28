@@ -1,6 +1,6 @@
 import {ModuleOptions} from 'webpack';
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
-import refresh from 'react-refresh-typescript';
+import ReactRefreshTypeScript from "react-refresh-typescript";
 import {BuildOptions} from "./types/types";
 
 export function buildLoaders(options: BuildOptions): ModuleOptions['rules'] {
@@ -34,8 +34,6 @@ export function buildLoaders(options: BuildOptions): ModuleOptions['rules'] {
     }
 
     const tsLoader = {
-        // ts-loader умеет работать с JSX
-        // Если б мы не использовали тайпскрипт: нужен был бы babel-loader
         exclude: /node_modules/,
         test: /\.tsx?$/,
         use: [
@@ -44,7 +42,7 @@ export function buildLoaders(options: BuildOptions): ModuleOptions['rules'] {
                 options: {
                     transpileOnly: true,
                     getCustomTransformers: () => ({
-                        before: [isDev && refresh()].filter(Boolean),
+                        before: [isDev && ReactRefreshTypeScript()].filter(Boolean),
                     }),
                 }
             }
