@@ -41,9 +41,9 @@ export function buildLoaders(options: BuildOptions): ModuleOptions['rules'] {
                 loader: 'ts-loader',
                 options: {
                     transpileOnly: true,
-                    getCustomTransformers: () => ({
-                        before: [isDev && ReactRefreshTypeScript()].filter(Boolean),
-                    }),
+                    // getCustomTransformers: () => ({
+                    //     before: [require('react-refresh-typescript')()],
+                    // }),
                 }
             }
         ]

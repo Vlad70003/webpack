@@ -2,7 +2,7 @@ import MiniCssExtractPlugin, {Configuration} from "mini-css-extract-plugin";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import webpack, {DefinePlugin} from "webpack";
 import {BuildOptions} from "./types/types";
-import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
+// import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
 
 
 export function buildPlugins(options: BuildOptions): Configuration['plugins'] {
@@ -11,7 +11,10 @@ export function buildPlugins(options: BuildOptions): Configuration['plugins'] {
     const analyzer = options.analyzer;
 
     const plugins: Configuration['plugins'] = [
-        new HtmlWebpackPlugin({template: options.paths.html}),
+        new HtmlWebpackPlugin({
+            template: options.paths.html,
+            publicPath: '/'
+        }),
         // new DefinePlugin({
         //     __PLATFORM__: JSON.stringify(options.platform)
         // }),
@@ -21,9 +24,9 @@ export function buildPlugins(options: BuildOptions): Configuration['plugins'] {
         plugins.push(
             new webpack.ProgressPlugin()
         )
-        plugins.push(
-            new ForkTsCheckerWebpackPlugin()
-        )
+        // plugins.push(
+        //     new ForkTsCheckerWebpackPlugin()
+        // )
     }
 
     if (isProd) {
