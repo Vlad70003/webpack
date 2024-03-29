@@ -1,1 +1,1 @@
-export {ShopLazy as Shop} from "./Shop.lazy"
+export {ShopLazy as Shop} from "./Shop.lazy";

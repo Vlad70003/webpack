@@ -44,7 +44,7 @@ export default (env: EnvVariables) => {
             ...packageJson.dependencies,
             'react': {
                 eager: true,
-                requiredVersion: packageJson.dependencies['react'],
+                requiredVersion: packageJson.dependencies.react,
             },
             'react-router-dom': {
                 eager: true,

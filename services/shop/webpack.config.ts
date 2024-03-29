@@ -33,6 +33,8 @@ export default (env: EnvVariables) => {
         filename: 'remoteEntry.js',
         exposes: {
             './Router': './src/router/Router.tsx',
+            './A': './src/ggg.tsx',
+            './Shop': './src/pages/shop/Shop.lazy.tsx',
         },
         shared: {
             ...packageJson.dependencies,

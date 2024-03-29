@@ -10,3 +10,7 @@ declare module "*.jpeg";
 declare module "*.gif";
 
 declare const __PLATFORM__: 'mobile' | 'desktop';
+
+declare module "shop/Router";
+declare module "admin/Router";
+declare module "shop/Shop";
